@@ -1,0 +1,40 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.projectpizza.Encryption"
+    android:weightSum="1">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:id="@+id/originalMessage"
+        android:hint="Enter the text you want to encrypt/decrypt"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.23"
+        android:layout_margin="10dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Encrypt/Decrypt"
+        android:onClick="encryptOrDecrypt"
+        android:id="@+id/encryptButton"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/switchedMessage"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.23"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:textIsSelectable="true"
+        android:hint="Press the button to encrypt/decrypt your message." />
+</LinearLayout>

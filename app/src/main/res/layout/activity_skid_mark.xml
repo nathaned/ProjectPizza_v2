@@ -1,0 +1,323 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="10dp"
+    tools:context="com.example.projectpizza.tools.SkidMark" >
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/scrollView" >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Show Info"
+                    android:onClick="showInfoSkidClick"
+                    android:id="@+id/showInfoSkidButton" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="IN METERS"
+                    android:id="@+id/textView2"
+                    android:layout_marginLeft="10dp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text=""
+                android:textSize="12sp"
+                android:textIsSelectable="true"
+                android:id="@+id/showInfoSkidText"
+                android:layout_gravity="center_horizontal" />
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:layout_marginTop="20dp"
+                    android:text="Energy Equation E= (1/2)* m * v^2"
+                    android:id="@+id/textView" />
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:minEms="5"
+                        android:hint="dat Mass doe"
+                        android:id="@+id/energyMInput" />
+
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:layout_marginLeft="5dp"
+                        android:minEms="5"
+                        android:hint="travelocity"
+                        android:id="@+id/energyVInput" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Solve Energy Equation"
+                        android:onClick="solveEnergyClick"
+                        android:id="@+id/button" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:hint="press solve"
+                        android:textIsSelectable="true"
+                        android:id="@+id/energyResult" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:textSize="20sp"
+                    android:text="Work Equation W = µ * m * g * d"
+                    android:id="@+id/textView" />
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:minEms="4"
+                        android:hint="µµµµµµµ"
+                        android:id="@+id/workUInput" />
+
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:minEms="4"
+                        android:hint="dat Mass doe"
+                        android:id="@+id/workMInput" />
+
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:layout_marginLeft="5dp"
+                        android:minEms="4"
+                        android:hint="W (=E)"
+                        android:id="@+id/workWInput" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Solve Work Equation (for d)"
+                        android:onClick="solveWorkClick"
+                        android:id="@+id/button" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:textIsSelectable="true"
+                        android:hint="press solve"
+                        android:id="@+id/workResult" />
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:textSize="20sp"
+                    android:text="Distance Equation d = (v^2)/(2*µ*g)"
+                    android:id="@+id/textView" />
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:minEms="4"
+                        android:hint="µµµµµµµ"
+                        android:id="@+id/distanceUInput" />
+
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:minEms="4"
+                        android:hint="travelocity"
+                        android:id="@+id/distanceVInput" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Solve Distance Equation"
+                        android:onClick="solveDistanceClick"
+                        android:id="@+id/button" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:textIsSelectable="true"
+                        android:hint="press solve"
+                        android:id="@+id/distanceResult" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:textSize="20sp"
+                    android:text="Velocity Equation v = sqrt(2*µ*g*d)"
+                    android:id="@+id/textView" />
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:minEms="4"
+                        android:hint="µµµµµµµ"
+                        android:id="@+id/velocityUInput" />
+
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:minEms="4"
+                        android:hint="The d."
+                        android:id="@+id/velocityDInput" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Solve Velocity Equation"
+                        android:onClick="solveVelocityClick"
+                        android:id="@+id/button" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:hint="press solve"
+                        android:textIsSelectable="true"
+                        android:id="@+id/velocityResult" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:layout_marginTop="30dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Extra Notes"
+                android:id="@+id/textView4" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:ems="10"
+                android:id="@+id/skidNotesBox" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Save"
+                android:onClick="skidNotesSaveClick"
+                android:id="@+id/saveTimelineButton" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

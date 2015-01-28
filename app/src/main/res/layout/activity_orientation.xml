@@ -1,0 +1,248 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context="com.example.projectpizza.OrientationActivity" >
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_height="fill_parent"
+        android:id="@+id/scrollView" >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Incination"
+                android:id="@+id/textView"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="5dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Loading..."
+                android:id="@+id/incination"
+                android:layout_gravity="center_horizontal"
+                android:textIsSelectable="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Bearing"
+                android:id="@+id/textView2"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="5dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Loading..."
+                android:id="@+id/bearing"
+                android:layout_gravity="center_horizontal"
+                android:textIsSelectable="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:layout_marginTop="70dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Saved Angles"
+                android:id="@+id/textView5" />
+
+            <TableLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:gravity="center_horizontal"
+                    android:layout_height="fill_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="Angle 1"
+                        android:layout_weight="1"
+                        android:id="@+id/textView6" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="Angle 2"
+                        android:layout_weight="1"
+                        android:id="@+id/textView7" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="Angle 3"
+                        android:layout_weight="1"
+                        android:id="@+id/textView8" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="Angle 4"
+                        android:layout_weight="1"
+                        android:id="@+id/textView9" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="Angle 5"
+                        android:layout_weight="1"
+                        android:id="@+id/textView10" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:gravity="center_horizontal"
+                    android:layout_height="fill_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="0"
+                        android:layout_weight="1"
+                        android:id="@+id/angle1Text" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="0"
+                        android:layout_weight="1"
+                        android:id="@+id/angle2Text" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="0"
+                        android:layout_weight="1"
+                        android:id="@+id/angle3Text" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="0"
+                        android:layout_weight="1"
+                        android:id="@+id/angle4Text" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="0"
+                        android:layout_weight="1"
+                        android:id="@+id/angle5Text" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:gravity="center_horizontal"
+                    android:layout_height="fill_parent">
+
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Update"
+                        android:textSize="15dp"
+                        android:padding="1dp"
+                        android:layout_weight="1"
+                        android:onClick="angle1Click"
+                        android:id="@+id/button7" />
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Update"
+                        android:textSize="15dp"
+                        android:padding="1dp"
+                        android:layout_weight="1"
+                        android:onClick="angle2Click"
+                        android:id="@+id/button8" />
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Update"
+                        android:textSize="15dp"
+                        android:padding="1dp"
+                        android:layout_weight="1"
+                        android:onClick="angle3Click"
+                        android:id="@+id/button9" />
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Update"
+                        android:textSize="15dp"
+                        android:padding="1dp"
+                        android:layout_weight="1"
+                        android:onClick="angle4Click"
+                        android:id="@+id/button10" />
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Update"
+                        android:textSize="15dp"
+                        android:padding="1dp"
+                        android:layout_weight="1"
+                        android:onClick="angle5Click"
+                        android:id="@+id/button11" />
+                </TableRow>
+
+            </TableLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:layout_marginTop="70dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Extra Notes"
+                android:id="@+id/textView4" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:ems="10"
+                android:id="@+id/orientationNotesBox" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Save"
+                android:onClick="orientationNotesSaveClick"
+                android:id="@+id/saveTimelineButton" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

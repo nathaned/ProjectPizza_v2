@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.projectpizza"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="16"
+        android:targetSdkVersion="21" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.example.projectpizza.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.projectpizza.TimerActivity"
+            android:label="Timer"
+            android:windowSoftInputMode="adjustResize" >
+        </activity>
+        <activity
+            android:name="com.example.projectpizza.OrientationActivity"
+            android:label="Orientation" >
+        </activity>
+        <activity
+            android:name="com.example.projectpizza.LightSensorActivity"
+            android:label="Light Sensor" >
+        </activity>
+        <activity
+            android:name="com.example.projectpizza.DistanceFinder"
+            android:label="@string/title_activity_distance_finder"
+            android:screenOrientation="landscape" >
+        </activity>
+        <activity
+            android:name="com.example.projectpizza.Encryption"
+            android:label="@string/title_activity_encryption" >
+        </activity>
+        <activity
+            android:name="com.example.projectpizza.tools.DudeMyCar"
+            android:label="@string/title_activity_dude_my_car" >
+        </activity>
+        <activity
+            android:name="com.example.projectpizza.tools.StraightArrow"
+            android:label="@string/title_activity_straight_arrow" >
+        </activity>
+        <activity
+            android:name="com.example.projectpizza.tools.TwoPlaces"
+            android:label="@string/title_activity_two_places" >
+        </activity>
+        <activity
+            android:name="com.example.projectpizza.tools.SkidMark"
+            android:label="@string/title_activity_skid_mark" >
+        </activity>
+        <activity
+            android:name="com.example.projectpizza.SoundRecorder"
+            android:label="@string/title_activity_sound_recorder" >
+        </activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,4 @@
+/Users/nathan/AndroidStudioProjects/ProjectPizza/app/build/intermediates/classes/debug
+/Users/nathan/AndroidStudioProjects/ProjectPizza/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-f85ab4ac08765ed6cf83f03ffaa209a8d6424577.jar
+/Users/nathan/AndroidStudioProjects/ProjectPizza/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-23998c815f1f4695af3c98b0abf40deb07bb4277.jar
+/Users/nathan/AndroidStudioProjects/ProjectPizza/app/build/intermediates/pre-dexed/debug/classes-3356ac8c7f46c6ea1d9b56e15563080e439f6b01.jar
