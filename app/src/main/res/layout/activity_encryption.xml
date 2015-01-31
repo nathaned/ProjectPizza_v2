@@ -27,6 +27,15 @@
         android:id="@+id/encryptButton"
         android:layout_gravity="center_horizontal" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="New Decrypt"
+        android:onClick="newDecrypt"
+        android:id="@+id/newDecryptButton"
+        android:layout_gravity="center_horizontal" />
+
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
