@@ -27,6 +27,7 @@ public class OrientationActivity extends Activity implements SensorEventListener
     SensorManager sensorManager = null;
     double inclinationValue;
     EditText orientationNotesBox;
+    TextView angleText1, angleText2, angleText3, angleText4, angleText5;
 
     public static final String PERFS = "save";
 
@@ -48,6 +49,8 @@ public class OrientationActivity extends Activity implements SensorEventListener
         orientationNotesBox = (EditText) findViewById(R.id.orientationNotesBox);
         SharedPreferences load = getSharedPreferences(PERFS, 0);
         orientationNotesBox.setText(load.getString("orientationNotes", "nope"));
+
+        loadAngles();
     }
 
 
@@ -133,6 +136,53 @@ public class OrientationActivity extends Activity implements SensorEventListener
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void loadAngles()
+    {
+        SharedPreferences angles = getSharedPreferences(PERFS, 0);
+        angleText1 = (TextView) findViewById(R.id.angle1Text);
+        angleText2 = (TextView) findViewById(R.id.angle2Text);
+        angleText3 = (TextView) findViewById(R.id.angle3Text);
+        angleText4 = (TextView) findViewById(R.id.angle4Text);
+        angleText5 = (TextView) findViewById(R.id.angle5Text);
+
+        angleText1.setText(""+angles.getInt("angle1", 0));
+        angleText2.setText(""+angles.getInt("angle2", 0));
+        angleText3.setText(""+angles.getInt("angle3", 0));
+        angleText4.setText(""+angles.getInt("angle4", 0));
+        angleText5.setText(""+angles.getInt("angle5", 0));
+    }
+
+    public void angleClick(View view)
+    {
+        int angle = Integer.parseInt(inclinationText.getText().toString());
+        SharedPreferences saveAngles = getSharedPreferences(PERFS, 0);
+        SharedPreferences.Editor editor = saveAngles.edit();
+        switch (view.getId())
+        {
+            case R.id.updateButton1:
+                editor.putInt("angle1", angle);
+                angleText1.setText(""+angle);
+                break;
+            case R.id.updateButton2:
+                editor.putInt("angle2", angle);
+                angleText2.setText(""+angle);
+                break;
+            case R.id.updateButton3:
+                editor.putInt("angle3", angle);
+                angleText3.setText(""+angle);
+                break;
+            case R.id.updateButton4:
+                editor.putInt("angle4", angle);
+                angleText4.setText(""+angle);
+                break;
+            case R.id.updateButton5:
+                editor.putInt("angle5", angle);
+                angleText5.setText(""+angle);
+                break;
+        }
+        editor.commit();
     }
 
 

@@ -178,8 +178,8 @@
                         android:textSize="15dp"
                         android:padding="1dp"
                         android:layout_weight="1"
-                        android:onClick="angle1Click"
-                        android:id="@+id/button7" />
+                        android:onClick="angleClick"
+                        android:id="@+id/updateButton1" />
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -187,8 +187,8 @@
                         android:textSize="15dp"
                         android:padding="1dp"
                         android:layout_weight="1"
-                        android:onClick="angle2Click"
-                        android:id="@+id/button8" />
+                        android:onClick="angleClick"
+                        android:id="@+id/updateButton2" />
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -196,8 +196,8 @@
                         android:textSize="15dp"
                         android:padding="1dp"
                         android:layout_weight="1"
-                        android:onClick="angle3Click"
-                        android:id="@+id/button9" />
+                        android:onClick="angleClick"
+                        android:id="@+id/updateButton3" />
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -205,8 +205,8 @@
                         android:textSize="15dp"
                         android:padding="1dp"
                         android:layout_weight="1"
-                        android:onClick="angle4Click"
-                        android:id="@+id/button10" />
+                        android:onClick="angleClick"
+                        android:id="@+id/updateButton4" />
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -214,8 +214,8 @@
                         android:textSize="15dp"
                         android:padding="1dp"
                         android:layout_weight="1"
-                        android:onClick="angle5Click"
-                        android:id="@+id/button11" />
+                        android:onClick="angleClick"
+                        android:id="@+id/updateButton5" />
                 </TableRow>
 
             </TableLayout>
