@@ -54,14 +54,15 @@ public class Encryption extends Activity {
             return;
         }
         String out = "";
-        for (int col=0; col<size[1]; col++)
+        for (int col=0; col<size[0]; col++)
         {
-            for (int row=0; row<size[0]; row++)
+            for (int row=0; row<size[1]; row++)
             {
-                out+=given.charAt( (row*size[1]) + col );
+                out+=given.charAt( (row*size[0]) + col );
             }
         }
         switchedMessage.setText(out);
+        switchedMessage.setText(switchedMessage.getText().toString()+"\n"+size[0] + " " + size[1]);
 
     }
 
