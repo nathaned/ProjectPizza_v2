@@ -50,7 +50,7 @@ public class Encryption extends Activity {
         //size[0] is number of rows; size[1] is number of columns
         if (size[0]==-1)
         {
-            switchedMessage.setText("-1");
+            switchedMessage.setText("-1, length: " + given.length());
             return;
         }
         String out = "";
@@ -62,7 +62,7 @@ public class Encryption extends Activity {
             }
         }
         switchedMessage.setText(out);
-        switchedMessage.setText(switchedMessage.getText().toString()+"\n"+size[0] + " " + size[1]);
+        switchedMessage.setText(switchedMessage.getText().toString()+"\n"+size[0] + "x" + size[1] + " (" + given.length() + ")");
 
     }
 
@@ -104,6 +104,8 @@ public class Encryption extends Activity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
 
 
 }

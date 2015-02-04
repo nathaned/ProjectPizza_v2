@@ -242,6 +242,37 @@
                 android:text="Save"
                 android:onClick="orientationNotesSaveClick"
                 android:id="@+id/saveTimelineButton" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Key:"
+                    android:id="@+id/textView11" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLength="4"
+                    android:id="@+id/keyText" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Solve"
+                    android:onClick="crackTheSafe"
+                    android:id="@+id/button7" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Code!1!!1"
+                    android:id="@+id/codeOutText" />
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 

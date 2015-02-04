@@ -18,6 +18,13 @@ import android.os.Build;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 public class OrientationActivity extends Activity implements SensorEventListener{
 
 
@@ -183,6 +190,54 @@ public class OrientationActivity extends Activity implements SensorEventListener
                 break;
         }
         editor.commit();
+    }
+
+    public void crackTheSafe(View view) {
+        EditText editText = (EditText) findViewById(R.id.keyText);
+        String key = editText.getText().toString();
+        char last = key.charAt(3);
+        String file;
+        if (Character.isUpperCase(last)) file = "upper" + last + ".txt";
+        else file = "lower" + last + ".txt";
+
+        String text = giveRow(file, key);
+
+        TextView codeOut = (TextView) findViewById(R.id.codeOutText);
+        codeOut.setText(text);
+    }
+
+
+    private String giveRow(String fileName, String key)
+    {
+        BufferedReader in = null;
+        try
+        {
+            in = new BufferedReader(new InputStreamReader(getAssets().open("keys/" + fileName)));
+            String line;
+            //final StringBuilder buffer = new StringBuilder();
+            while ((line = in.readLine()) != null)
+            {
+                //buffer.append(line).append(System.getProperty("line.separator"));
+                if(line.substring(0,4).equals(key)) return line;
+            }
+            //return buffer.toString();
+        }
+        catch (final IOException e)
+        {
+            return "";
+        }
+        finally
+        {
+            try
+            {
+                in.close();
+            }
+            catch (IOException e)
+            {
+                // ignore //
+            }
+        }
+        return "";
     }
 
 
