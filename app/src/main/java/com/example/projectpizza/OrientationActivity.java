@@ -238,7 +238,7 @@ public class OrientationActivity extends Activity implements SensorEventListener
                 // ignore //
             }
         }
-        return "";
+        return "key not found";
     }
 
 
