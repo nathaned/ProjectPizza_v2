@@ -207,6 +207,7 @@ public class OrientationActivity extends Activity implements SensorEventListener
     }
 
 
+
     private String giveRow(String fileName, String key)
     {
         BufferedReader in = null;
