@@ -6,6 +6,10 @@ import android.content.ComponentName;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -30,9 +34,9 @@ import com.example.projectpizza.tools.SkidMark;
 import com.example.projectpizza.tools.StraightArrow;
 import com.example.projectpizza.tools.TwoPlaces;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements SensorEventListener {
 
-	TextView textLat, textLong, calculatedDistance, currentLocationTitle, calculateDistanceText, accuracyText, toolsText, incidentsText;
+	TextView textLat, textLong, calculatedDistance, currentLocationTitle, calculateDistanceText, accuracyText, toolsText, incidentsText, currentBearing;
 	EditText calcLat, calcLong;
 	double pLatRounded, pLongRounded;
 	String direction;
@@ -59,20 +63,27 @@ public class MainActivity extends Activity {
         calcLong =              (EditText)findViewById(R.id.calcLong1);
         calculatedDistance =    (TextView)findViewById(R.id.calculatedDistance);
         toolsText =             (TextView)findViewById(R.id.toolsText);
-        incidentsText =         (TextView)findViewById(R.id.incidentsText);
+        //incidentsText =         (TextView)findViewById(R.id.incidentsText);
+        currentBearing =        (TextView)findViewById(R.id.currentBearing);
 
         currentLocationTitle.   setTypeface(robotoThin);
         calculateDistanceText.  setTypeface(robotoThin);
         toolsText.              setTypeface(robotoThin);
-        incidentsText.          setTypeface(robotoThin);
+        //incidentsText.          setTypeface(robotoThin);
         textLat.                setTypeface(robotoLight);
         textLong.               setTypeface(robotoLight);
         accuracyText.           setTypeface(robotoLight);
+        currentBearing.         setTypeface(robotoLight);
 
         calcTo = new Location("Inputted Location");
 		currentLocation = new Location("Current Location");
 
-		LocationManager lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+        SensorManager sensorManager = (SensorManager) this.getSystemService(SENSOR_SERVICE);
+        sensorManager.registerListener(this, sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL);
+        sensorManager.registerListener(this, sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD), SensorManager.SENSOR_DELAY_NORMAL);
+
+
+        LocationManager lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
 		LocationListener ll = new mylocationlistener();
 		lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, ll);
 
@@ -197,7 +208,10 @@ public class MainActivity extends Activity {
 			double  realDirection = Math.round((double)(calcTo.bearingTo(currentLocation))*100)/100.0;
 			
 			String realWordDirection;
-            double fixedDirection = Math.round((realDirection+90) * -10.0)/10.0;
+            double realDirectionPositive = realDirection;
+            if(realDirection>90) realDirectionPositive = 450 - realDirection;
+            else realDirectionPositive = 90 - realDirection;
+            double fixedDirection = Math.round((realDirectionPositive) * 10.0)/10.0;
 			if (fixedDirection>90.0) realWordDirection="Northwest";
 			else if (fixedDirection>0.0) realWordDirection="Northeast";
 			else if (fixedDirection<-90.0) realWordDirection="Southwest";
@@ -216,7 +230,7 @@ public class MainActivity extends Activity {
 			calcLatDifference = Math.round(calcLatDifference * 1000000) / 1000000.0;
 			calcLongDifference = Math.round(calcLongDifference * 1000000) / 1000000.0;
 			
-			if (calcLatDifference > 0)
+			/*if (calcLatDifference > 0)
 			{
 				if (calcLongDifference > 0)	direction = "Northeast";
 				else if (calcLongDifference < 0) direction = "Northwest";
@@ -233,7 +247,7 @@ public class MainActivity extends Activity {
 				if (calcLongDifference > 0) direction = "East";
 				else if (calcLongDifference < 0) direction = "West";
 				else direction = "?";
-			} 
+			} */
 			double distanceInFeet = Math.round(distFrom(lat1=calcLatNumber, lng1=calcLongNumber, lat2=pLatRounded, lng2=pLongRounded)*10)/10.0;
 			//float [] storeDistance= new float[3];
 			//double distanceInMeters = location.distanceBetween(calcLatNumber, calcLongNumber, pLatRounded, pLongRounded, storeDistance);
@@ -320,7 +334,7 @@ public class MainActivity extends Activity {
         }
     }
 
-    public void toolLaunch (View view)
+    /*public void toolLaunch (View view)
     {
         Intent startNewActivityOpen;
         switch (view.getId())
@@ -345,16 +359,16 @@ public class MainActivity extends Activity {
                 startActivityForResult(startNewActivityOpen, 0);
                 break;
         }
-    }
+    }*/
 
-    public void imSoLonely (View view)
+    /*public void imSoLonely (View view)
     {
         Intent smsIntent = new Intent(Intent.ACTION_VIEW);
         smsIntent.setType("vnd.android-dir/mms-sms");
         smsIntent.putExtra("address", "3217450482");
         //smsIntent.putExtra("sms_body","YoloSwagTeam");
         startActivity(smsIntent);
-    }
+    }*/
 
     public void quickTextDialog (View view)
     {
@@ -448,6 +462,67 @@ public class MainActivity extends Activity {
         teamBox.setText(""+getTeamNum.getInt("teamNum", 12345));
         teamBox.setEnabled(false);
         teamBox.setFocusable(false);
+    }
+
+
+
+
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {    }
+
+    // Arrays of sensor values for each sensor
+    float[] mGravity;
+    float[] mGeomagnetic;
+    Float reading_in_radians;
+    //double x;
+    //double y;
+
+    public void onSensorChanged(SensorEvent event) {
+
+        // Save accelerometer sensor update
+        if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER)
+        {
+            mGravity = event.values;
+            //double x = event.values[0];
+            //double y = event.values[1];
+        }
+
+        // Save magnetic sensor update
+        if (event.sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD)
+        {
+            mGeomagnetic = event.values;
+        }
+
+        // If data is available for both sensors
+        // This logic uses Android rotation and orientation functions
+        // to derive the rotation in radians relative to the north pole
+        if (mGravity != null && mGeomagnetic != null)
+        {
+            float rotation[] = new float[9];
+            float inclination[] = new float[9];
+            boolean success = SensorManager.getRotationMatrix(rotation, inclination, mGravity, mGeomagnetic);
+            if (success)
+            {
+                float orientation[] = new float[3];
+                SensorManager.getOrientation(rotation, orientation);
+                reading_in_radians = orientation[0];
+
+
+                //inclinationValue = Math.toDegrees(Math.atan2(mGravity[1],mGravity[0]));
+
+                // Insert code here
+                // update UI with bearing
+                float reading_in_degrees =(float) Math.toDegrees((double)reading_in_radians);
+                int bearingLike = (int) reading_in_degrees;
+                if(bearingLike<0)
+                {
+                    int temp = bearingLike;
+                    bearingLike = 180 + (180 + temp);
+                }
+                currentBearing.setText("Current Bearing: " + bearingLike);
+                //inclinationText.setText("" + (int)inclinationValue);
+                //bearing.setText("" + reading_in_radians);
+            }
+        }
     }
 
 

@@ -200,6 +200,17 @@
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
                 <TextView
+                    android:id="@+id/currentBearing"
+                    android:text="Current Bearing: "
+                    android:layout_width="wrap_content"
+                    android:textColor="#444444"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textIsSelectable="true"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <TextView
                     android:id="@+id/toolsText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -229,12 +240,12 @@
                         android:onClick="orientationButtonClicked"
                         android:text="Compass and Level" />
 
-                    <Button
+                    <!--<Button
                         android:id="@+id/button4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:onClick="lightSensorButtonClicked"
-                        android:text="Light Sensor" />
+                        android:text="Light Sensor" />-->
 
                     <Button
                         android:layout_width="wrap_content"
@@ -266,7 +277,7 @@
                         android:onClick="militaryButtonClicked"
                         android:id="@+id/buttonMilitary" />
 
-                    <Button
+                    <!--<Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="I'm So Lonely"
@@ -293,12 +304,12 @@
                             android:onClick="quickTextDialog"
                             android:id="@+id/button5" />
 
-                    </LinearLayout>
+                    </LinearLayout>-->
 
                 </LinearLayout>
 
 
-                <TextView
+                <!--<TextView
                     android:id="@+id/incidentsText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -352,7 +363,9 @@
                             android:id="@+id/dudeMyCarButton" />
                     </TableRow>
 
-                </TableLayout>
+                </TableLayout>-->
+
+
 
                 <LinearLayout
                     android:orientation="horizontal"
