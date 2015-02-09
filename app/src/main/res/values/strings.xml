@@ -21,5 +21,6 @@
     <string name="title_activity_two_places">Two Places At Once</string>
     <string name="title_activity_skid_mark">Skid Marks</string>
     <string name="title_activity_sound_recorder">SoundRecorder</string>
+    <string name="title_activity_find_the_lab">Find The Lab</string>
 
 </resources>

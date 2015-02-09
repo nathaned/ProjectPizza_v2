@@ -189,7 +189,7 @@ public class OrientationActivity extends Activity implements SensorEventListener
                 angleText5.setText(""+angle);
                 break;
         }
-        editor.commit();
+        editor.apply();
     }
 
     public void crackTheSafe(View view) {

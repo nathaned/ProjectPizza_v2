@@ -112,6 +112,12 @@ public class MainActivity extends Activity implements SensorEventListener {
         startActivityForResult(startNewActivityOpen, 0);
 	}
 
+	public void abcCirclesClicked (View view)
+    {
+        Intent startNewActivityOpen = new Intent(com.example.projectpizza.MainActivity.this, FindTheLab.class);
+        startActivityForResult(startNewActivityOpen, 0);
+	}
+
     public void lightSensorButtonClicked (View view)
     {
         Intent startNewActivityOpen = new Intent(com.example.projectpizza.MainActivity.this, com.example.projectpizza.LightSensorActivity.class);
