@@ -248,7 +248,6 @@
                         android:id="@+id/longTextC" />
                 </TableRow>
 
-
                 <!--<TableRow
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent">
@@ -348,6 +347,143 @@
                 android:layout_marginTop="30dp"
                 android:layout_gravity="center_horizontal"
                 android:id="@+id/findIntersectionTitle" />
+
+
+            <TableLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="  "
+                        android:layout_weight=".5"
+                        android:id="@+id/textView21" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="A"
+                        android:textSize="24sp"
+                        android:gravity="center"
+                        android:layout_weight="2"
+                        android:id="@+id/textView22" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="B"
+                        android:textSize="24sp"
+                        android:gravity="center"
+                        android:layout_weight="2"
+                        android:id="@+id/textView23" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:gravity="center"
+                        android:textSize="24sp"
+                        android:text="C"
+                        android:layout_weight="2"
+                        android:id="@+id/textView24" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="Point"
+                        android:textSize="12sp"
+                        android:gravity="center"
+                        android:layout_weight=".5"
+                        android:id="@+id/textView25" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="not found"
+                        android:textSize="15sp"
+                        android:gravity="center"
+                        android:layout_weight="2"
+                        android:id="@+id/pointA" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:hint="not found"
+                        android:textSize="15sp"
+                        android:gravity="center"
+                        android:layout_weight="2"
+                        android:id="@+id/pointB" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textSize="15sp"
+                        android:hint="not found"
+                        android:layout_weight="2"
+                        android:id="@+id/pointC" />
+
+                    </TableRow>
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="Radius"
+                        android:textSize="12sp"
+                        android:gravity="center"
+                        android:layout_weight=".5"
+                        android:id="@+id/textView26" />
+
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="15dp"
+                        android:hint="not set"
+                        android:inputType="numberDecimal|numberSigned"
+                        android:layout_weight="2"
+                        android:gravity="center"
+                        android:id="@+id/radiusA" />
+
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="15dp"
+                        android:hint="not set"
+                        android:layout_weight="2"
+                        android:inputType="numberDecimal|numberSigned"
+                        android:gravity="center"
+                        android:id="@+id/radiusB"  />
+
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="15dp"
+                        android:hint="not set"
+                        android:layout_weight="2"
+                        android:inputType="numberDecimal|numberSigned"
+                        android:gravity="center"
+                        android:id="@+id/radiusC" />
+                </TableRow>
+            </TableLayout>
 
             <TextView
                 android:layout_width="wrap_content"
