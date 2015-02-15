@@ -1,27 +1,19 @@
 package com.example.projectpizza;
 
 import android.app.Activity;
-import android.app.ActionBar;
-import android.app.Fragment;
 import android.content.SharedPreferences;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.os.Build;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
@@ -31,7 +23,6 @@ public class OrientationActivity extends Activity implements SensorEventListener
     TextView bearing;
     TextView inclinationText;
     Float reading_in_radians;
-    SensorManager sensorManager = null;
     double inclinationValue;
     EditText orientationNotesBox;
     TextView angleText1, angleText2, angleText3, angleText4, angleText5;
@@ -69,8 +60,7 @@ public class OrientationActivity extends Activity implements SensorEventListener
     // Arrays of sensor values for each sensor
     float[] mGravity;
     float[] mGeomagnetic;
-    double x;
-    double y;
+
 
     public void onSensorChanged(SensorEvent event) {
 

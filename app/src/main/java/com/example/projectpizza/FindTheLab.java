@@ -61,9 +61,9 @@ public class FindTheLab extends Activity {
         LocationListener ll = new mylocationlistener();
         lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, ll);
 
-        notesBox = (EditText) findViewById(R.id.orientationNotesBox);
+        notesBox = (EditText) findViewById(R.id.notesBox);
         SharedPreferences load = getSharedPreferences(PERFS, 0);
-        //notesBox.setText(load.getString("labNotes", "nope"));
+        notesBox.setText(load.getString("labNotes", "nope"));
 
         loadLocations();
 
