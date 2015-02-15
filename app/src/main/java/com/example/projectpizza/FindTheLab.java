@@ -20,7 +20,8 @@ import org.w3c.dom.Text;
 
 public class FindTheLab extends Activity {
 
-    TextView textLat, textLong, currentLocationTitle, accuracyText, locationsTitle, notesTitle, fiTitle;
+    TextView textLat, textLong, currentLocationTitle, accuracyText, locationsTitle, notesTitle, fiTitle,
+            pointAText, pointBText, pointCText;
     EditText latA, latB, latC, longA, longB, longC, notesBox;
     double pLatRounded, pLongRounded;
     Location currentLocation;
@@ -44,6 +45,9 @@ public class FindTheLab extends Activity {
         locationsTitle =        (TextView)findViewById(R.id.locationsTitle);
         notesTitle =            (TextView)findViewById(R.id.notesTitle);
         fiTitle =               (TextView)findViewById(R.id.findIntersectionTitle);
+        pointAText =            (TextView)findViewById(R.id.pointA);
+        pointBText =            (TextView)findViewById(R.id.pointB);
+        pointCText =            (TextView)findViewById(R.id.pointC);
 
         currentLocationTitle.   setTypeface(robotoThin);
         locationsTitle.         setTypeface(robotoThin);
@@ -59,7 +63,7 @@ public class FindTheLab extends Activity {
 
         notesBox = (EditText) findViewById(R.id.orientationNotesBox);
         SharedPreferences load = getSharedPreferences(PERFS, 0);
-        notesBox.setText(load.getString("labNotes", "nope"));
+        //notesBox.setText(load.getString("labNotes", "nope"));
 
         loadLocations();
 
@@ -112,38 +116,10 @@ public class FindTheLab extends Activity {
         longB.setEnabled(false);    longB.setFocusable(false);
         longC.setEnabled(false);    longC.setFocusable(false);
 
+        setPoints();
+
     }
 
-    /*public void setCurrent(View view)
-    {
-        String lat = textLat.getText().toString();
-        String lon = textLong.getText().toString();
-        //int angle = Integer.parseInt(inclinationText.getText().toString());
-        SharedPreferences locations = getSharedPreferences(PERFS, 0);
-        SharedPreferences.Editor editor = locations.edit();
-        switch (view.getId())
-        {
-            case R.id.currentA:
-                editor.putString("latA", lat);
-                editor.putString("longA", lon);
-                latA.setText("" + lat);
-                longA.setText("" + lon);
-                break;
-            case R.id.currentB:
-                editor.putString("latB", lat);
-                editor.putString("longB", lon);
-                latB.setText("" + lat);
-                longB.setText("" + lon);
-                break;
-            case R.id.currentC:
-                editor.putString("latC", lat);
-                editor.putString("longC", lon);
-                latC.setText("" + lat);
-                longC.setText("" + lon);
-                break;
-        }
-        editor.apply();
-    }*/
 
     public void editLocation(View view)
     {
@@ -220,8 +196,60 @@ public class FindTheLab extends Activity {
         SharedPreferences save = getSharedPreferences(PERFS, 0);
         SharedPreferences.Editor editor = save.edit();
         editor.putString("labNotes", message);
-        editor.commit();
+        editor.apply();
     }
+
+    public void solveIntersection(View view)
+    {
+        setPoints();
+    }
+
+    public void setPoints()
+    {
+        if( !(latA.getText().toString().equals("")) && !(longA.getText().toString().equals("")) )
+        {
+            Location locA = new Location("A");
+            locA.setLatitude(Double.parseDouble(latA.getText().toString()));
+            locA.setLongitude(Double.parseDouble(longA.getText().toString()));
+            pointAText.setText("(0, 0");
+
+            if(!(latB.getText().toString().equals("")) && !(longB.getText().toString().equals("")))
+            {
+                String bean = "(";
+                Location locB = new Location("B");
+                locB.setLatitude(Double.parseDouble(latB.getText().toString()));
+                locB.setLongitude(Double.parseDouble(longB.getText().toString()));
+                Location temp = new Location("temp");
+                temp.setLongitude(locA.getLongitude());
+                temp.setLatitude(locB.getLatitude());
+                bean += "" + (Math.round(locA.distanceTo(temp) * 10.0) /10.0) + ", ";
+                temp.setLatitude(locA.getLatitude());
+                temp.setLongitude(locB.getLongitude());
+                bean += "" + (Math.round(locA.distanceTo(temp) * 10.0) /10.0) + ")";
+                pointBText.setText(bean);
+
+            }
+            if(!(latC.getText().toString().equals("")) && !(longC.getText().toString().equals("")))
+            {
+                String bean = "(";
+                Location locC = new Location("C");
+                locC.setLatitude(Double.parseDouble(latC.getText().toString()));
+                locC.setLongitude(Double.parseDouble(longC.getText().toString()));
+                Location temp = new Location ("temp");
+                temp.setLongitude(locA.getLongitude());
+                temp.setLatitude(locC.getLatitude());
+                bean += "" + (Math.round(locA.distanceTo(temp) * 10.0 ) /10.0) + ", ";
+                temp.setLatitude(locA.getLatitude());
+                temp.setLongitude(locC.getLongitude());
+                bean += "" + (Math.round(locA.distanceTo(temp) * 10.0) /10.0) + ")";
+                pointCText.setText(bean);
+            }
+
+
+        }
+
+    }
+
 
 
     class mylocationlistener implements LocationListener

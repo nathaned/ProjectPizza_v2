@@ -86,7 +86,6 @@
                         android:gravity="center"
                         android:layout_weight="1"
                         android:textColor="#444444"
-
                         android:id="@+id/textLong"
                         android:hint="Loading..."  />
 
@@ -456,9 +455,9 @@
                     <EditText
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="15dp"
+                        android:textSize="15sp"
                         android:hint="not set"
-                        android:inputType="numberDecimal|numberSigned"
+                        android:inputType="numberDecimal"
                         android:layout_weight="2"
                         android:gravity="center"
                         android:id="@+id/radiusA" />
@@ -466,24 +465,39 @@
                     <EditText
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="15dp"
+                        android:textSize="15sp"
                         android:hint="not set"
                         android:layout_weight="2"
-                        android:inputType="numberDecimal|numberSigned"
+                        android:inputType="numberDecimal"
                         android:gravity="center"
                         android:id="@+id/radiusB"  />
 
                     <EditText
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="15dp"
+                        android:textSize="15sp"
                         android:hint="not set"
                         android:layout_weight="2"
-                        android:inputType="numberDecimal|numberSigned"
+                        android:inputType="numberDecimal"
                         android:gravity="center"
                         android:id="@+id/radiusC" />
                 </TableRow>
             </TableLayout>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Solve"
+                android:layout_gravity="center_horizontal"
+                android:onClick="solveIntersection"
+                android:id="@+id/solveButton" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Press Solve"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/intersectionSolution" />
 
             <TextView
                 android:layout_width="wrap_content"
