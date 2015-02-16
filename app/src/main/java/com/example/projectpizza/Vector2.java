@@ -120,4 +120,14 @@ public final class Vector2 implements Serializable {
     {
         return getClass().getSimpleName() + "(" + x + ", " + y + ")";
     }
+
+    public double getX()
+    {
+        return x;
+    }
+
+    public double getY()
+    {
+        return y;
+    }
 }

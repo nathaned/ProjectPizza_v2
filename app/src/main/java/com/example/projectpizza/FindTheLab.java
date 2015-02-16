@@ -21,10 +21,10 @@ import org.w3c.dom.Text;
 public class FindTheLab extends Activity {
 
     TextView textLat, textLong, currentLocationTitle, accuracyText, locationsTitle, notesTitle, fiTitle,
-            pointAText, pointBText, pointCText;
+            pointAText, pointBText, pointCText, intersectionSolution;
     EditText latA, latB, latC, longA, longB, longC, notesBox;
     double pLatRounded, pLongRounded;
-    Location currentLocation;
+    //Location currentLocation;
 
     public static final String PERFS = "save";
 
@@ -48,6 +48,7 @@ public class FindTheLab extends Activity {
         pointAText =            (TextView)findViewById(R.id.pointA);
         pointBText =            (TextView)findViewById(R.id.pointB);
         pointCText =            (TextView)findViewById(R.id.pointC);
+        intersectionSolution =  (TextView)findViewById(R.id.intersectionSolution);
 
         currentLocationTitle.   setTypeface(robotoThin);
         locationsTitle.         setTypeface(robotoThin);
@@ -201,7 +202,56 @@ public class FindTheLab extends Activity {
 
     public void solveIntersection(View view)
     {
+        EditText radiusA = (EditText)findViewById(R.id.radiusA);
+        EditText radiusB = (EditText)findViewById(R.id.radiusB);
+        EditText radiusC = (EditText)findViewById(R.id.radiusC);
+
+        if ( pointAText.getText().toString().equals("") || pointBText.getText().toString().equals("") || pointCText.getText().toString().equals("") ||
+                radiusA.getText().toString().equals("") || radiusB.getText().toString().equals("") || radiusC.getText().toString().equals(""))
+        {
+            intersectionSolution.setText("complete all fields");
+            return;
+        }
         setPoints();
+        Vector2 vecA = new Vector2(0, 0);
+        double [] temp = getPoint(1);
+        Vector2 vecB = new Vector2(temp[0], temp[1]);
+        temp = getPoint(2);
+        Vector2 vecC = new Vector2(temp[0], temp[1]);
+
+        Circle circleA = new Circle(vecA, Double.parseDouble(radiusA.getText().toString()));
+        Circle circleB = new Circle(vecB, Double.parseDouble(radiusB.getText().toString()));
+        Circle circleC = new Circle(vecC, Double.parseDouble(radiusC.getText().toString()));
+
+        CircleCircleIntersection intersectAB = new CircleCircleIntersection(circleA, circleB);
+        CircleCircleIntersection intersectAC = new CircleCircleIntersection(circleA, circleC);
+        CircleCircleIntersection intersectBC = new CircleCircleIntersection(circleB, circleC);
+
+        String text = "";
+        text+= "AB: " + intersectionsToString(intersectAB);
+        text+= "\nAC: " + intersectionsToString(intersectAC);
+        text+= "\nBC: " + intersectionsToString(intersectBC);
+
+        intersectionSolution.setText(text);
+    }
+
+    public String intersectionsToString(CircleCircleIntersection intersection)
+    {
+        int count = intersection.type.getIntersectionPointCount();
+        if(count==-1) return "same circle";
+        if(count==0) return "no intersections";
+
+        Vector2[] points = intersection.getIntersectionPoints();
+        double x = Math.round(points[0].getX() * 10.0)/10.0;
+        double y = Math.round(points[0].getY() * 10.0)/10.0;
+        String toReturn = ("(" + x + ", " + y + ")");
+        if(count==2)
+        {
+            double x2 = Math.round(points[1].getX() * 10.0)/10.0;
+            double y2 = Math.round(points[1].getY() * 10.0)/10.0;
+            toReturn += " and (" + x2 + ", " + y2 + ")";
+        }
+        return toReturn;
     }
 
     public void setPoints()
@@ -211,7 +261,7 @@ public class FindTheLab extends Activity {
             Location locA = new Location("A");
             locA.setLatitude(Double.parseDouble(latA.getText().toString()));
             locA.setLongitude(Double.parseDouble(longA.getText().toString()));
-            pointAText.setText("(0, 0");
+            pointAText.setText("(0, 0)");
 
             if(!(latB.getText().toString().equals("")) && !(longB.getText().toString().equals("")))
             {
@@ -222,9 +272,11 @@ public class FindTheLab extends Activity {
                 Location temp = new Location("temp");
                 temp.setLongitude(locA.getLongitude());
                 temp.setLatitude(locB.getLatitude());
+                if(locA.getLongitude()>locB.getLongitude()) bean += "-";
                 bean += "" + (Math.round(locA.distanceTo(temp) * 10.0) /10.0) + ", ";
                 temp.setLatitude(locA.getLatitude());
                 temp.setLongitude(locB.getLongitude());
+                if(locA.getLatitude()>locB.getLatitude()) bean += "-";
                 bean += "" + (Math.round(locA.distanceTo(temp) * 10.0) /10.0) + ")";
                 pointBText.setText(bean);
 
@@ -238,9 +290,11 @@ public class FindTheLab extends Activity {
                 Location temp = new Location ("temp");
                 temp.setLongitude(locA.getLongitude());
                 temp.setLatitude(locC.getLatitude());
+                if(locA.getLongitude()>locC.getLongitude()) bean += "-";
                 bean += "" + (Math.round(locA.distanceTo(temp) * 10.0 ) /10.0) + ", ";
                 temp.setLatitude(locA.getLatitude());
                 temp.setLongitude(locC.getLongitude());
+                if(locA.getLatitude()>locC.getLatitude()) bean += "-";
                 bean += "" + (Math.round(locA.distanceTo(temp) * 10.0) /10.0) + ")";
                 pointCText.setText(bean);
             }
@@ -248,6 +302,27 @@ public class FindTheLab extends Activity {
 
         }
 
+    }
+
+    public double[] getPoint(int point)
+    {
+        double[] toReturn = new double[2];
+        if (point == 0) //point A
+        {
+            toReturn[0] = 0;
+            toReturn[1] = 0;
+        }
+        else if (point == 1) //point B
+        {
+            toReturn[0] = Double.parseDouble(pointBText.getText().toString().substring(1, pointBText.getText().toString().indexOf(",")));
+            toReturn[1] = Double.parseDouble(pointBText.getText().toString().substring(pointBText.getText().toString().indexOf(" ") + 1, pointBText.getText().toString().length()-1));
+        }
+        else if (point == 2) //point C
+        {
+            toReturn[0] = Double.parseDouble(pointCText.getText().toString().substring(1, pointCText.getText().toString().indexOf(",")));
+            toReturn[1] = Double.parseDouble(pointCText.getText().toString().substring(pointCText.getText().toString().indexOf(" ") + 1, pointCText.getText().toString().length()-1));
+        }
+        return toReturn;
     }
 
 
@@ -266,7 +341,7 @@ public class FindTheLab extends Activity {
                 pLatRounded = Math.round(pLat * 1000000) /1000000.0;
                 pLongRounded = Math.round(pLong * 1000000) /1000000.0;
 
-                currentLocation.set(location);
+                //currentLocation.set(location);
 
                 textLat.setText(Double.toString(pLatRounded));
                 textLong.setText(Double.toString(pLongRounded));

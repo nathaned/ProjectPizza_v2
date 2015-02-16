@@ -9,8 +9,11 @@ import static java.lang.Math.*;
 // References:
 // http://paulbourke.net/geometry/2circle/
 // http://mathworld.wolfram.com/Circle-CircleIntersection.html
-public final class CircleCircleIntersection {
-    public static enum Type {
+public final class CircleCircleIntersection
+{
+
+    public static enum Type
+    {
         COINCIDENT(-1),
         CONCENTRIC_CONTAINED(0),
         ECCENTRIC_CONTAINED(0),
@@ -19,26 +22,38 @@ public final class CircleCircleIntersection {
         EXTERNALLY_TANGENT(1),
         SEPARATE(0);
         private final int n;
-        private Type(int n) {
+        private Type(int n)
+        {
             this.n = n;
         }
-        public int getIntersectionPointCount() {
-// Returns -1 if count is infinite (coincident circles).
+        public int getIntersectionPointCount()
+        {
+            // Returns -1 if count is infinite (coincident circles).
             return n;
         }
-        public boolean isConcentric() {
+
+        public boolean isConcentric()
+        {
             return this == COINCIDENT || this == CONCENTRIC_CONTAINED;
         }
-        public boolean isContained() {
+
+        public boolean isContained()
+        {
             return this == CONCENTRIC_CONTAINED || this == ECCENTRIC_CONTAINED;
         }
-        public boolean isTangent() {
+
+        public boolean isTangent()
+        {
             return n == 1;
         }
-        public boolean isDisjoint() {
+
+        public boolean isDisjoint()
+        {
             return n == 0;
         }
     }
+
+
     public final Circle c1;
     public final Circle c2;
     // Results valid for all intersections:
@@ -56,14 +71,17 @@ public final class CircleCircleIntersection {
     public final Vector2 intersectionPoint1;
     public final Vector2 intersectionPoint2;
     public final double distanceRadicalPointIntersectionPoints;
-    public CircleCircleIntersection(Circle c1, Circle c2) {
+
+
+    public CircleCircleIntersection(Circle c1, Circle c2)
+    {
         this.c1 = c1;
         this.c2 = c2;
-// Vector going from c1 center to c2 center:
+        // Vector going from c1 center to c2 center:
         Vector2 vectorC1cC2c = c2.c.sub(c1.c);
-// Distance between circle centers:
+        // Distance between circle centers:
         distanceC1cC2c = vectorC1cC2c.mod();
-// If circles are concentric there is no radical line, handle the case here:
+        // If circles are concentric there is no radical line, handle the case here:
         if (distanceC1cC2c == 0)
         {
             if (c1.r == c2.r) type = Type.COINCIDENT;
@@ -79,24 +97,26 @@ public final class CircleCircleIntersection {
             distanceRadicalPointIntersectionPoints = 0;
             return;
         }
-// Type determination is simpler if done later.
-/* else
-{
-double rs = c1.r + c2.r;
-if (distanceC1cC2c >= rs) {
-if (distanceC1cC2c == rs) type = Type.EXTERNALLY_TANGENT;
-else type = Type.SEPARATE;
-}
-else
-{
-double rd = abs(c1.r - c2.r);
-if (distanceC1cC2c <= rd) {
-if (distanceC1cC2c == rd) type = Type.INTERNALLY_TANGENT;
-else type = Type.ECCENTRIC_CONTAINED;
-}
-else type = Type.OVERLAPPING;
-}
-} */
+        // Type determination is simpler if done later.
+        /* else
+        {
+        double rs = c1.r + c2.r;
+        if (distanceC1cC2c >= rs) {
+        if (distanceC1cC2c == rs) type = Type.EXTERNALLY_TANGENT;
+        else type = Type.SEPARATE;
+        }
+        else
+        {
+        double rd = abs(c1.r - c2.r);
+        if (distanceC1cC2c <= rd) {
+        if (distanceC1cC2c == rd) type = Type.INTERNALLY_TANGENT;
+        else type = Type.ECCENTRIC_CONTAINED;
+        }
+        else type = Type.OVERLAPPING;
+        }
+        } */
+
+
 // Direction versor from c1 center to c2 center:
         versorC1cC2c = vectorC1cC2c.scale(1 / distanceC1cC2c);
 // Signed distances from circle centers to radical line (the direction to the other center is positive):
@@ -108,7 +128,8 @@ else type = Type.OVERLAPPING;
         versorRadicalLine = versorC1cC2c.rotPlus90();
 // If type had been determined before:
 //switch (type.getIntersectionPointCount()) { ... }
-// Square of distance between radical point and either intersection point, if circles are overlapping:
+
+        // Square of distance between radical point and either intersection point, if circles are overlapping:
         double sqH = sq(c1.r) - sq(distanceC1cRadicalLine);
         if (sqH > 0)
         {
