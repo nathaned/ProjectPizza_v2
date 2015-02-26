@@ -22,5 +22,6 @@
     <string name="title_activity_skid_mark">Skid Marks</string>
     <string name="title_activity_sound_recorder">SoundRecorder</string>
     <string name="title_activity_find_the_lab">Find The Lab</string>
+    <string name="title_activity_qrthings">QRThings</string>
 
 </resources>

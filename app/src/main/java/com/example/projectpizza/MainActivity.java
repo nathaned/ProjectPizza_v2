@@ -150,6 +150,12 @@ public class MainActivity extends Activity implements SensorEventListener {
         startActivity(i);
     }
 
+    public void newQRClick (View view)
+    {
+        Intent startNewActivityOpen = new Intent(com.example.projectpizza.MainActivity.this, QRThings.class);
+        startActivityForResult(startNewActivityOpen, 0);
+    }
+
     public void hollaClicked (View view)
     {
         /*Intent i = new Intent(Intent.ACTION_MAIN);
@@ -445,10 +451,10 @@ public class MainActivity extends Activity implements SensorEventListener {
             teamBox.setEnabled(false);
             teamBox.setFocusable(false);
 
-            int teamNum = Integer.parseInt(teamBox.getText().toString());
+            String teamNum = teamBox.getText().toString();
             SharedPreferences saveTeamNum = getSharedPreferences(PERFS, 0);
             SharedPreferences.Editor editor = saveTeamNum.edit();
-            editor.putInt("teamNum", teamNum);
+            editor.putString("teamNum", teamNum);
             editor.commit();
 
         }
@@ -465,7 +471,7 @@ public class MainActivity extends Activity implements SensorEventListener {
     {
         EditText    teamBox = (EditText) findViewById(R.id.teamText);
         SharedPreferences getTeamNum = getSharedPreferences(PERFS, 0);
-        teamBox.setText(""+getTeamNum.getInt("teamNum", 12345));
+        teamBox.setText(""+getTeamNum.getString("teamNum", "12345"));
         teamBox.setEnabled(false);
         teamBox.setFocusable(false);
     }

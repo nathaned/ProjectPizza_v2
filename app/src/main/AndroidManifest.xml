@@ -21,8 +21,12 @@
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <android:uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18" />
 
     <application
         android:allowBackup="true"
@@ -84,6 +88,14 @@
             android:name=".FindTheLab"
             android:label="@string/title_activity_find_the_lab" >
         </activity>
+        <activity
+            android:name=".QRThings"
+            android:label="@string/title_activity_qrthings" >
+        </activity>
+        <activity
+            android:name=".MasterServerCommunicator"
+            android:label="Master Server Communicator" >
+            </activity>
     </application>
 
 </manifest>

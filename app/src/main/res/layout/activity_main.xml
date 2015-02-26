@@ -268,14 +268,21 @@
                         android:onClick="launchSoundRecorder"
                         android:id="@+id/buttonSound"
                         android:layout_gravity="center_horizontal" />
-
                     <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="QR NEW"
+                        android:onClick="newQRClick"
+                        android:id="@+id/buttonQRNew"
+                        android:layout_gravity="center_horizontal" />
+
+                    <!--<Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="QR"
                         android:onClick="launchGoogleGoggles"
                         android:id="@+id/buttonQR"
-                        android:layout_gravity="center_horizontal" />
+                        android:layout_gravity="center_horizontal" />-->
 
                     <Button
                         android:layout_width="wrap_content"

@@ -266,17 +266,26 @@ public class FindTheLab extends Activity {
             if(!(latB.getText().toString().equals("")) && !(longB.getText().toString().equals("")))
             {
                 String bean = "(";
+
                 Location locB = new Location("B");
                 locB.setLatitude(Double.parseDouble(latB.getText().toString()));
                 locB.setLongitude(Double.parseDouble(longB.getText().toString()));
+
                 Location temp = new Location("temp");
-                temp.setLongitude(locA.getLongitude());
+                /*temp.setLongitude(locA.getLongitude());
                 temp.setLatitude(locB.getLatitude());
-                if(locA.getLongitude()>locB.getLongitude()) bean += "-";
-                bean += "" + (Math.round(locA.distanceTo(temp) * 10.0) /10.0) + ", ";
+                if(locA.getLongitude()>locB.getLongitude()) bean += "-";*/
                 temp.setLatitude(locA.getLatitude());
                 temp.setLongitude(locB.getLongitude());
-                if(locA.getLatitude()>locB.getLatitude()) bean += "-";
+                if (locA.getLongitude()>locB.getLongitude()) bean += "-";
+                bean += "" + (Math.round(locA.distanceTo(temp) * 10.0) /10.0) + ", ";
+
+                /*temp.setLatitude(locA.getLatitude());
+                temp.setLongitude(locB.getLongitude());
+                if(locA.getLatitude()>locB.getLatitude()) bean += "-";*/
+                temp.setLongitude(locA.getLongitude());
+                temp.setLatitude(locB.getLatitude());
+                if (locA.getLatitude()>locB.getLatitude()) bean += "-";
                 bean += "" + (Math.round(locA.distanceTo(temp) * 10.0) /10.0) + ")";
                 pointBText.setText(bean);
 
@@ -284,18 +293,28 @@ public class FindTheLab extends Activity {
             if(!(latC.getText().toString().equals("")) && !(longC.getText().toString().equals("")))
             {
                 String bean = "(";
+
                 Location locC = new Location("C");
                 locC.setLatitude(Double.parseDouble(latC.getText().toString()));
                 locC.setLongitude(Double.parseDouble(longC.getText().toString()));
+
                 Location temp = new Location ("temp");
-                temp.setLongitude(locA.getLongitude());
+                /*temp.setLongitude(locA.getLongitude());
                 temp.setLatitude(locC.getLatitude());
-                if(locA.getLongitude()>locC.getLongitude()) bean += "-";
-                bean += "" + (Math.round(locA.distanceTo(temp) * 10.0 ) /10.0) + ", ";
+                if(locA.getLongitude()>locC.getLongitude()) bean += "-";*/
                 temp.setLatitude(locA.getLatitude());
                 temp.setLongitude(locC.getLongitude());
-                if(locA.getLatitude()>locC.getLatitude()) bean += "-";
+                if (locA.getLongitude()>locC.getLongitude()) bean += "-";
+                bean += "" + (Math.round(locA.distanceTo(temp) * 10.0 ) /10.0) + ", ";
+
+                /*temp.setLatitude(locA.getLatitude());
+                temp.setLongitude(locC.getLongitude());
+                if(locA.getLatitude()>locC.getLatitude()) bean += "-";*/
+                temp.setLongitude(locA.getLongitude());
+                temp.setLatitude(locC.getLatitude());
+                if (locA.getLatitude()>locC.getLatitude()) bean += "-";
                 bean += "" + (Math.round(locA.distanceTo(temp) * 10.0) /10.0) + ")";
+
                 pointCText.setText(bean);
             }
 
